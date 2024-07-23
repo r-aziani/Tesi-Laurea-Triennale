@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+"http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>   
+   	<definition name="tiles.home" path="/index.jsp">		  
+ 		<put name="body"   	value="WEB-INF/jsp/home.jsp" 	type="page" />
+	</definition>
+	
+	<definition name="tiles.scegliCampo" path="/index.jsp">
+		<put name="body" value="WEB-INF/jsp/scegli_campo.jsp" type="page"/>
+	</definition>
+	
+	<definition name="tiles.loginAreaRiservata" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/login_area_riservata.jsp" type="page" />
+	</definition>
+	
+	<definition name="tiles.mostraDisponibilita" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/mostra_disponibilita.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.inserisciDati" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/inserisci_dati.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.confermaPrenotazione" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/conferma_prenotazione.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.confermaPrenotazioneFailed" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/conferma_prenotazione_failed.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.riepilogo" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/riepilogo.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.errorePrenotazione" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/errore_prenotazione.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.areaRiservata" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/area_riservata_prenotazioni.jsp" type="page" />
+	</definition>
+	
+	<definition name="tiles.areaRiservataElimina" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/area_riservata_elimina.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.areaRiservataDisponibilita" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/area_riservata_sceltaData.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.modificaDisponibilita" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/area_riservata_modificaDisponibilita.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.digitaCodicePrenotazione" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/digita_codice.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.codiceNonTrovato" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/codice_non_trovato.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.gestisciPrenotazione" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/gestisci_prenotazione.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.prenotazioneEliminata" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/prenotazione_eliminata.jsp" type="page"></put>
+	</definition>
+	
+	<definition name="tiles.erroreEliminaPrenotazione" path="/index.jsp">
+	  <put name="body" value="WEB-INF/jsp/elimina_prenotazione_errore.jsp" type="page"></put>
+	</definition>
+	
+</tiles-definitions>

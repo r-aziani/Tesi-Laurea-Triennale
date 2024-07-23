@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+	<form-beans>
+	  <form-bean name="beanCalendario" type="bean.Calendario"></form-bean>
+	  <form-bean name="beanPrenotazione" type="bean.Prenotazione"></form-bean>
+	  <form-bean name="beanUtente" type="bean.Utente"></form-bean>
+	  <form-bean name="beanAreaRiservata" type="bean.MenuAreaRiservata"></form-bean>
+	  <form-bean name="beanModificaDisponibilita" type="bean.ModificaDisponibilita"></form-bean>
+	</form-beans>
+
+	<global-forwards>
+      <forward name="index" path="index.do"/> <!-- path="/index.do"> -->
+    </global-forwards>
+    
+    <action-mappings>
+        <action path="/index" type="action.Parti">
+          <forward name="success" path="tiles.home" />
+        </action>
+        
+        <action path="/scegli" type="action.Scegli">
+		  <forward name="success" path="tiles.scegliCampo"/>
+        </action>
+        
+        <action path="/login" type="action.LoginAreaRiservata">
+          <forward name="success" path="tiles.loginAreaRiservata"/>
+        </action>
+        
+        <action path="/areaRiservata" type="action.AreaRiservata" name="beanUtente">
+          <forward name="success" path="tiles.areaRiservata"></forward>
+          <forward name="fail" path="tiles.home"></forward>
+        </action>
+    	
+    	<action path="/mostraDisponibilita" type="action.MostraDisponibilita" name="beanCalendario">
+    	  <forward name="success" path="tiles.mostraDisponibilita"></forward>
+    	</action>
+    	
+    	<action path="/inserisciDati" type="action.InserisciDati" name="beanPrenotazione">
+    	  <forward name="success" path="tiles.inserisciDati"></forward>
+    	</action>
+    	
+    	<action path="/confermaPrenotazione" type="action.ConfermaPrenotazione" 
+    			name="beanPrenotazione" scope="request" validate="true">
+    	  <forward name="success" path="redirectConfermaPrenotazione.do" redirect="true" />
+    	</action>
+    	
+    	<action path="/redirectConfermaPrenotazione" type="action.RedirectConfermaPrenotazione"
+    			scope="request" validate="false">
+    	  <forward name="success" path="tiles.confermaPrenotazione"></forward>
+    	</action>
+    	
+    	<action path="/riepilogo" type="action.Riepilogo"
+    			name="beanPrenotazione" scope="request" validate="true">
+    	  <forward name="failCode" path="tiles.confermaPrenotazioneFailed"></forward>
+    	  <forward name="success" path="redirectRiepilogo.do" redirect="true"></forward>
+    	  <forward name="fail" path="tiles.errorePrenotazione"></forward>
+    	</action>
+    	
+    	<action path="/redirectRiepilogo" type="action.RedirectRiepilogo"
+    			scope="request" validate="false">
+    	  <forward name="success" path="tiles.riepilogo"></forward>
+    	</action>
+    	
+    	<action path="/segnaComePagato" type="action.SegnaComePagato" name="beanPrenotazione">
+    	  <forward name="success" path="tiles.areaRiservata"></forward>
+    	</action>
+    	
+    	<action path="/menuAreaRiservata" type="action.MenuAreaRiservata" name="beanAreaRiservata">
+    	  <forward name="elencoPrenotazioni" path="tiles.areaRiservata"></forward>
+    	  <forward name="eliminaPrenotazioni" path="tiles.areaRiservataElimina"></forward>
+    	  <forward name="modificaDisponibilita" path="tiles.areaRiservataDisponibilita"></forward>
+    	</action>
+    	
+    	<action path="/areaRiservataElimina" type="action.AreaRiservataElimina" name="beanPrenotazione">
+    	  <forward name="success" path="tiles.areaRiservataElimina"></forward>
+    	</action>
+    	
+    	<action path="/scegliData" type="action.ScegliData" name="beanModificaDisponibilita">
+    	  <forward name="success" path="tiles.modificaDisponibilita"></forward>
+    	</action>
+    	
+    	<action path="/cambiaDisponibilita" type="action.CambiaDisponibilita" name="beanModificaDisponibilita">
+    	  <forward name="success" path="tiles.areaRiservataDisponibilita"></forward>
+    	</action>
+    	
+    	<action path="/goDigitaCodice" type="action.GoDigitaCodice">
+    	  <forward name="success" path="tiles.digitaCodicePrenotazione"></forward>
+    	</action>
+    	
+    	<action path="/controllaCodice" type="action.ControllaCodice" name="beanPrenotazione">
+    	  <forward name="success" path="tiles.gestisciPrenotazione"></forward>
+    	  <forward name="fail" path="tiles.codiceNonTrovato"></forward>
+    	</action>
+    	
+    	<action path="/eliminaPrenotazione" type="action.EliminaPrenotazione" name="beanPrenotazione">
+    	  <forward name="success" path="redirectEliminaPrenotazione.do" redirect="true"></forward>
+    	  <forward name="fail" path="tiles.erroreEliminaPrenotazione"></forward>
+    	</action>
+    	
+    	<action path="/redirectEliminaPrenotazione" type="action.RedirectEliminaPrenotazione">
+    	  <forward name="success" path="tiles.prenotazioneEliminata"></forward>
+    	</action>
+    	
+    </action-mappings>
+    
+    
+   	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+   
+	<plug-in className="org.apache.struts.tiles.TilesPlugin" >
+		<set-property property="definitions-config" 		value="/WEB-INF/tiles-defs.xml"/>
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+	
+</struts-config>
+
